@@ -1,0 +1,29 @@
+---
+import { siteData } from '../data/site';
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex items-center group">
+  <!-- Tooltip text (shown on hover) -->
+  <span 
+    class="mr-3 scale-0 origin-right translate-x-2 group-hover:scale-100 group-hover:translate-x-0 bg-brand-secondary text-brand-bg text-xs font-bold px-3 py-2 rounded-xl shadow-lg border border-brand-primary/20 transition-all duration-300 pointer-events-none"
+  >
+    Pesan Cepat via WA 💬
+  </span>
+
+  <!-- Pulse ring helper -->
+  <div class="absolute inset-0 rounded-full bg-emerald-500/40 animate-pulse-ring pointer-events-none"></div>
+
+  <!-- WhatsApp Link Button -->
+  <a
+    href={siteData.waLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 active:scale-90 text-white shadow-xl border border-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2"
+    aria-label="Hubungi kami cepat lewat WhatsApp"
+    style="width: 56px; height: 56px;"
+  >
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.528 2.017 14.077 1.001 11.997 1c-5.439 0-9.867 4.372-9.87 9.802 0 1.63.482 3.224 1.393 4.634L2.527 20.89l5.093-1.316-1.077-.42zM17.91 14.3c-.324-.162-1.92-.949-2.218-1.059-.297-.109-.514-.162-.73.162-.217.324-.838 1.059-1.027 1.275-.19.216-.379.243-.703.08-1.785-.895-3.08-1.579-4.148-3.414-.282-.486-.062-.75.14-.993.183-.217.379-.486.568-.73.19-.243.253-.405.379-.675.127-.27.063-.514-.032-.676-.095-.162-.73-1.758-.999-2.407-.262-.63-.53-.54-.73-.55-.19-.01-.406-.01-.622-.01s-.568.081-.865.405c-.297.324-1.135 1.109-1.135 2.703 0 1.594 1.162 3.136 1.324 3.352.162.216 2.284 3.488 5.534 4.894 2.7.11 3.248-.88 3.248-.88s.27-1.162.378-1.568c.108-.405-.081-.622-.243-.784z" />
+    </svg>
+  </a>
+</div>

@@ -1,0 +1,67 @@
+---
+import { siteData } from '../data/site';
+---
+
+<section id="faq" class="py-16 md:py-24 bg-brand-surface relative overflow-hidden">
+  <!-- Decorative Background Blobs -->
+  <div class="absolute -left-24 top-1/4 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl -z-10 animate-float"></div>
+  
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-brand-secondary/10 text-brand-secondary uppercase tracking-wider">
+        ❓ FAQ
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-text font-display leading-tight">
+        Pertanyaan yang Sering Diajukan
+      </h2>
+      <p class="text-base sm:text-lg text-brand-muted leading-relaxed">
+        Masih ragu atau butuh informasi lebih lanjut? Temukan jawaban atas pertanyaan umum seputar layanan kami di bawah ini.
+      </p>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-4">
+      {siteData.faqs.map((faq, index) => (
+        <div class="faq-item group border border-brand-secondary/15 rounded-2xl bg-brand-bg/25 overflow-hidden transition-all duration-300">
+          
+          <!-- Trigger Header -->
+          <h3>
+            <button
+              type="button"
+              class="faq-trigger flex items-center justify-between w-full p-6 text-left font-bold text-base sm:text-lg text-brand-text hover:text-brand-secondary focus:outline-none transition-colors duration-300"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${index}`}
+              id={`faq-btn-${index}`}
+              style="min-height: 48px;"
+            >
+              <span>{faq.q}</span>
+              
+              <!-- Caret Icon -->
+              <span class="faq-icon flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full bg-brand-primary/10 text-brand-secondary group-hover:bg-brand-primary/20 transition-all duration-300">
+                <svg class="w-4 h-4 transition-transform duration-350 fill-none stroke-current stroke-[2.5]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+          </h3>
+
+          <!-- Collapse Content Panel -->
+          <div
+            id={`faq-answer-${index}`}
+            class="faq-content hidden"
+            role="region"
+            aria-labelledby={`faq-btn-${index}`}
+          >
+            <div class="px-6 pb-6 pt-1 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-secondary/5 bg-brand-surface/40">
+              {faq.a}
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

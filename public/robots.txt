@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gubuk-kuliner.pages.dev/sitemap.xml

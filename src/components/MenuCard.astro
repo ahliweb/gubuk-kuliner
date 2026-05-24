@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  price: string;
+  image: string;
+  badge?: string;
+  waLink: string;
+}
+
+const { title, description, price, image, badge, waLink } = Astro.props;
+---
+
+<div class="group relative flex flex-col bg-brand-surface rounded-3xl border border-brand-secondary/10 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+  
+  <!-- Image Wrapper -->
+  <div class="relative overflow-hidden aspect-[4/3]">
+    <img 
+      src={image} 
+      alt={title} 
+      loading="lazy"
+      width="600"
+      height="450"
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    
+    <!-- Popular / Category Badge -->
+    {badge && (
+      <span class="absolute top-4 left-4 bg-brand-secondary text-brand-bg text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+        ✨ {badge}
+      </span>
+    )}
+    
+    <!-- Price Overlay Badge -->
+    <span class="absolute bottom-4 right-4 bg-brand-primary text-brand-text text-sm font-extrabold px-3 py-1.5 rounded-2xl shadow-md border border-brand-bg/50">
+      {price}
+    </span>
+  </div>
+
+  <!-- Content -->
+  <div class="flex-grow p-6 sm:p-8 flex flex-col justify-between space-y-6">
+    <div class="space-y-3">
+      <h3 class="text-xl sm:text-2xl font-bold text-brand-text group-hover:text-brand-secondary transition-colors font-display leading-snug">
+        {title}
+      </h3>
+      <p class="text-sm sm:text-base text-brand-muted leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <!-- CTA Button -->
+    <a 
+      href={waLink} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl font-extrabold text-sm bg-brand-primary text-brand-text group-hover:bg-brand-secondary group-hover:text-brand-bg active:scale-95 shadow-md transition-all text-center"
+      aria-label={`Pesan ${title} melalui WhatsApp`}
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.528 2.017 14.077 1.001 11.997 1c-5.439 0-9.867 4.372-9.87 9.802 0 1.63.482 3.224 1.393 4.634L2.527 20.89l5.093-1.316-1.077-.42zM17.91 14.3c-.324-.162-1.92-.949-2.218-1.059-.297-.109-.514-.162-.73.162-.217.324-.838 1.059-1.027 1.275-.19.216-.379.243-.703.08-1.785-.895-3.08-1.579-4.148-3.414-.282-.486-.062-.75.14-.993.183-.217.379-.486.568-.73.19-.243.253-.405.379-.675.127-.27.063-.514-.032-.676-.095-.162-.73-1.758-.999-2.407-.262-.63-.53-.54-.73-.55-.19-.01-.406-.01-.622-.01s-.568.081-.865.405c-.297.324-1.135 1.109-1.135 2.703 0 1.594 1.162 3.136 1.324 3.352.162.216 2.284 3.488 5.534 4.894 2.7.11 3.248-.88 3.248-.88s.27-1.162.378-1.568c.108-.405-.081-.622-.243-.784z" />
+      </svg>
+      Pesan via WhatsApp
+    </a>
+  </div>
+</div>

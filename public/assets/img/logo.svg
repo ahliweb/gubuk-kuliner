@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;display=swap');
+      .blob { fill: #D9B43E; }
+      .text-title { font-family: 'Caveat', cursive; font-size: 60px; fill: #3B2418; font-weight: 700; letter-spacing: 1px; }
+      .text-subtitle { font-family: 'Caveat', cursive; font-size: 68px; fill: #3B2418; font-weight: 700; letter-spacing: 1px; }
+      .underline { stroke: #3B2418; stroke-width: 4.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  
+  <!-- Organic Yellow Blob Background -->
+  <path class="blob" d="M 25,75 C 15,35 55,5 105,10 C 165,15 195,40 245,25 C 305,5 375,15 415,50 C 455,85 475,125 445,160 C 415,195 345,180 295,185 C 235,190 175,205 115,190 C 55,175 35,115 25,75 Z" />
+  
+  <!-- "Gubuk" Text -->
+  <text x="65" y="80" class="text-title">Gubuk</text>
+  
+  <!-- "Kuliner" Text -->
+  <text x="65" y="140" class="text-subtitle">Kuliner</text>
+  
+  <!-- Double wavy hand-drawn lines -->
+  <path class="underline" d="M 60,158 Q 145,153 230,163 T 395,153" />
+  <path class="underline" d="M 70,170 Q 155,165 240,175 T 385,165" />
+</svg>

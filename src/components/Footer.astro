@@ -1,0 +1,117 @@
+---
+import { siteData } from '../data/site';
+---
+
+<footer id="lokasi" class="bg-brand-text text-brand-bg pt-16 pb-8 border-t border-brand-secondary/25">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Contact and Brand Info Column -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Logo (White / Light Version) -->
+        <a href="/" class="inline-block group focus:outline-none focus:ring-2 focus:ring-brand-primary rounded-lg" aria-label="Beranda Gubuk Kuliner">
+          <!-- Filtered logo to look lighter/white for contrast on dark background -->
+          <img 
+            src="/assets/img/logo.svg" 
+            alt="Logo Gubuk Kuliner" 
+            width="180" 
+            height="72" 
+            class="h-14 w-auto brightness-200 contrast-125 transition-transform duration-300 group-hover:scale-105" 
+          />
+        </a>
+
+        <p class="text-sm sm:text-base text-brand-bg/85 leading-relaxed">
+          Gubuk Kuliner menyajikan menu rumahan lezat, halal, dan higienis khas cita rasa nusantara. Siap menemani makan siang, sore, hingga malam Anda di Kelurahan Madurejo.
+        </p>
+
+        <!-- Details Grid -->
+        <div class="space-y-4 pt-2">
+          
+          <!-- Location Details -->
+          <div class="flex items-start gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-primary/15 text-brand-primary border border-brand-primary/20 flex-shrink-0">
+              📍
+            </span>
+            <div>
+              <h4 class="font-extrabold text-brand-primary text-sm uppercase tracking-wider">Lokasi Kami</h4>
+              <p class="text-sm text-brand-bg/90 leading-snug">{siteData.address}</p>
+            </div>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="flex items-start gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-primary/15 text-brand-primary border border-brand-primary/20 flex-shrink-0">
+              📞
+            </span>
+            <div>
+              <h4 class="font-extrabold text-brand-primary text-sm uppercase tracking-wider">Menerima Pesanan</h4>
+              <p class="text-sm text-brand-bg/90 leading-snug">
+                <a href={siteData.waLink} class="hover:text-brand-primary hover:underline transition-all">+{siteData.whatsapp}</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Operational Time -->
+          <div class="flex items-start gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-primary/15 text-brand-primary border border-brand-primary/20 flex-shrink-0">
+              ⏰
+            </span>
+            <div>
+              <h4 class="font-extrabold text-brand-primary text-sm uppercase tracking-wider">Jam Operasional</h4>
+              <p class="text-sm text-brand-bg/90 leading-snug">Buka Setiap Hari s/d Pukul {siteData.openUntil} WIB</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Maps Link Button -->
+        <div class="pt-2">
+          <a 
+            href={siteData.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl font-bold text-sm bg-brand-primary text-brand-text hover:bg-brand-bg hover:text-brand-text active:scale-95 shadow-md transition-all"
+            aria-label="Buka peta lokasi di Google Maps"
+          >
+            🗺️ Buka Google Maps
+          </a>
+        </div>
+      </div>
+
+      <!-- Map Embed Column -->
+      <div class="lg:col-span-7 space-y-4">
+        <h3 class="text-xl font-bold text-brand-primary font-display">Peta Interaktif</h3>
+        
+        <!-- Google Map Embed Wrapper -->
+        <div class="relative w-full overflow-hidden rounded-3xl border-2 border-brand-secondary/30 shadow-lg" style="aspect-ratio: 16/10;">
+          <iframe
+            src={siteData.mapsEmbedUrl}
+            class="absolute inset-0 h-full w-full border-0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi Warung Gubuk Kuliner"
+          ></iframe>
+        </div>
+        
+        <p class="text-xs text-brand-bg/70 leading-relaxed italic text-right">
+          *Untuk kenyamanan drive-thru atau makan di tempat, Anda bisa melakukan pemesanan via WA + DP terlebih dahulu.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Copyright Divider -->
+    <div class="mt-16 pt-8 border-t border-brand-bg/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-brand-bg/60">
+      <p>© {new Date().getFullYear()} Gubuk Kuliner. Hak Cipta Dilindungi.</p>
+      <div class="flex items-center gap-4">
+        <a href="#menu" class="hover:text-brand-primary hover:underline transition-colors">Menu</a>
+        <span>•</span>
+        <a href="#faq" class="hover:text-brand-primary hover:underline transition-colors">FAQ</a>
+        <span>•</span>
+        <a href={siteData.waLink} target="_blank" rel="noopener" class="hover:text-brand-primary hover:underline transition-colors">Kontak WA</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

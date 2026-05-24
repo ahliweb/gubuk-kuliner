@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;family=Outfit:wght@600;800&amp;family=Plus+Jakarta+Sans:wght@500&amp;display=swap');
+      .bg { fill: #FFF9ED; }
+      .blob-large { fill: #D9B43E; }
+      .text-brand-1 { font-family: 'Caveat', cursive; font-size: 110px; fill: #3B2418; font-weight: 700; }
+      .text-brand-2 { font-family: 'Caveat', cursive; font-size: 130px; fill: #3B2418; font-weight: 700; }
+      .underline { stroke: #3B2418; stroke-width: 8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .title { font-family: 'Outfit', sans-serif; font-size: 48px; fill: #7A4A2E; font-weight: 800; }
+      .desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; fill: #80604A; font-weight: 500; }
+      .badge { fill: #7A4A2E; rx: 12px; }
+      .badge-text { font-family: 'Outfit', sans-serif; font-size: 24px; fill: #FFF9ED; font-weight: 600; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Base Background -->
+  <rect width="1200" height="630" class="bg" />
+  
+  <!-- Large Yellow Blobs in corners -->
+  <path class="blob-large" d="M -50,-50 C 100,-100 250,50 300,200 C 350,350 150,500 -50,450 Z" />
+  <path class="blob-large" d="M 1250,680 C 1100,680 950,500 1000,350 C 1050,200 1150,100 1250,150 Z" opacity="0.8" />
+  
+  <!-- Brand Logo inside OG image -->
+  <g transform="translate(100, 100)">
+    <path class="blob-large" d="M 10,70 C 5,30 45,5 90,10 C 140,15 170,40 210,25 C 260,10 320,15 350,45 C 380,75 400,110 375,140 C 350,170 290,155 250,160 C 200,165 150,180 100,165 C 50,150 35,100 10,70 Z" />
+    <text x="50" y="75" class="text-brand-1">Gubuk</text>
+    <text x="50" y="135" class="text-brand-2">Kuliner</text>
+    <path class="underline" d="M 45,150 Q 115,145 185,153 T 325,145" />
+    <path class="underline" d="M 55,160 Q 125,155 195,163 T 315,155" />
+  </g>
+  
+  <!-- Promotion Info on the Right -->
+  <g transform="translate(520, 150)">
+    <text x="0" y="50" class="title">Menu Rumahan Lezat &amp; Nikmat</text>
+    <text x="0" y="110" class="desc">Nasi Telur Dadar Sambal Cumi/Teri &amp; Tahu Tek-Tek</text>
+    <text x="0" y="160" class="desc">Mulai Rp15.000+ • Buka sampai 21.00</text>
+    <text x="0" y="210" class="desc">Layanan Makan di Tempat &amp; Drive-Thru</text>
+    
+    <!-- CTA Badges -->
+    <g transform="translate(0, 270)">
+      <rect x="0" y="0" width="300" height="60" class="badge" />
+      <text x="150" y="38" class="badge-text">Pesan via WhatsApp</text>
+    </g>
+    <g transform="translate(320, 270)">
+      <rect x="0" y="0" width="220" height="60" class="badge" fill="#D9B43E" />
+      <text x="110" y="38" class="badge-text" fill="#3B2418">Mulai Rp15.000+</text>
+    </g>
+  </g>
+</svg>

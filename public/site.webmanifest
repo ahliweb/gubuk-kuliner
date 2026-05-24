@@ -1,0 +1,17 @@
+{
+  "name": "Gubuk Kuliner",
+  "short_name": "Gubuk Kuliner",
+  "description": "Menu rumahan lezat, harga terjangkau, siap disantap sampai malam di Madurejo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF9ED",
+  "theme_color": "#D9B43E",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
