@@ -106,4 +106,4 @@ npm run preview
 Proyek ini dilisensikan di bawah **AW Non-Commercial License 1.0** — lisensi sumber-terbuka yang mengizinkan penggunaan non-komersial. Penggunaan komersial memerlukan izin tertulis dari pemegang hak cipta.
 
 - [Lihat halaman lisensi](/license)
-- [Dokumen lisensi resmi](https://github.com/ahliweb/aw-non-commercial-license)
+- [Dokumen lisensi resmi](https://github.com/ahliweb/gubuk-kuliner?tab=License-1-ov-file)
