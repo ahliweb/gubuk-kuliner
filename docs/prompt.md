@@ -474,8 +474,15 @@ Meta minimal:
 1. Title.
 2. Description.
 3. Canonical: `https://gubuk-kuliner.pages.dev`.
-4. Open Graph (`og:url` ke `https://gubuk-kuliner.pages.dev`).
-5. Twitter Card.
+4. Open Graph lengkap:
+   - `og:title`: judul website.
+   - `og:description`: deskripsi website.
+   - `og:url`: `https://gubuk-kuliner.pages.dev`.
+   - `og:image`: gambar share 1200×630px (`/assets/img/og-image.svg` atau PNG/WebP).
+   - `og:image:width`: 1200.
+   - `og:image:height`: 630.
+   - `og:type`: website.
+5. Twitter Card (`twitter:card: summary_large_image`, `twitter:image` ke URL gambar yang sama).
 6. JSON-LD LocalBusiness / Restaurant (dengan `url: "https://gubuk-kuliner.pages.dev"`).
 7. Robots.
 8. Sitemap (dengan `<loc>https://gubuk-kuliner.pages.dev/</loc>`).
@@ -654,12 +661,17 @@ Kebutuhan UI/UX:
 11. Footer berisi nama brand, alamat, nomor WhatsApp, jam buka, dan copyright.
 
 Kebutuhan gambar:
-Gunakan foto/gambar dari CDN yang sesuai dengan kuliner Indonesia, nasi telur, telur dadar, tahu, sambal, makanan rumahan.
-Boleh gunakan URL HTTPS dari Unsplash/Pexels/image CDN yang stabil.
-Jika sulit mendapatkan foto spesifik, gunakan SVG dekoratif lokal dan placeholder makanan berbasis SVG.
-Semua gambar wajib memiliki alt text deskriptif.
-Gunakan lazy loading untuk gambar non-hero.
-Set width dan height untuk mengurangi CLS.
+1. Gambar OG / Share Image (`public/assets/img/og-image.svg` atau PNG/WebP):
+   - Ukuran wajib: 1200×630px.
+   - Isi: nama brand "Gubuk Kuliner", tagline singkat, palet warna mustard/cokelat/krem, dan ilustrasi makanan.
+   - Harus menarik saat muncul di preview WhatsApp, Facebook, Twitter, LinkedIn, dll.
+   - Gunakan SVG dengan viewBox="0 0 1200 630" atau export ke PNG/WebP.
+2. Gambar makanan dari CDN yang sesuai dengan kuliner Indonesia, nasi telur, telur dadar, tahu, sambal, makanan rumahan.
+3. Boleh gunakan URL HTTPS dari Unsplash/Pexels/image CDN yang stabil.
+4. Jika sulit mendapatkan foto spesifik, gunakan SVG dekoratif lokal dan placeholder makanan berbasis SVG.
+5. Semua gambar wajib memiliki alt text deskriptif.
+6. Gunakan lazy loading untuk gambar non-hero.
+7. Set width dan height untuk mengurangi CLS.
 
 Kebutuhan SEO:
 1. Title:
@@ -667,8 +679,11 @@ Kebutuhan SEO:
 2. Meta description:
    Gubuk Kuliner di Jl. Ahmad Wongso, Kel. Madurejo. Menu rumahan mulai Rp15.000+, buka sampai 21.00, bisa makan di tempat, drive-thru, dan pesan via WhatsApp dengan DP dulu.
 3. Canonical URL: https://gubuk-kuliner.pages.dev.
-4. Tambahkan Open Graph lengkap dengan og:url https://gubuk-kuliner.pages.dev.
-5. Tambahkan Twitter Card.
+4. Tambahkan Open Graph lengkap:
+   - og:title, og:description, og:url (https://gubuk-kuliner.pages.dev).
+   - og:image: 1200×630px, gunakan /assets/img/og-image.svg atau PNG/WebP agar muncul saat link dibagikan ke WhatsApp, Facebook, Twitter, dll.
+   - og:image:width: 1200, og:image:height: 630, og:type: website.
+5. Tambahkan Twitter Card: twitter:card summary_large_image, twitter:image ke URL gambar yang sama.
 6. Tambahkan JSON-LD tipe Restaurant/LocalBusiness dengan url: https://gubuk-kuliner.pages.dev.
 7. Tambahkan robots.txt.
 8. Tambahkan sitemap.xml dengan <loc>https://gubuk-kuliner.pages.dev/</loc>.
@@ -740,6 +755,7 @@ Struktur file yang harus dibuat:
 Isi data site.ts:
 - brandName: Gubuk Kuliner
 - website: https://gubuk-kuliner.pages.dev
+- ogImage: https://gubuk-kuliner.pages.dev/assets/img/og-image.svg
 - whatsapp: 6281545087641
 - address: Jl. Ahmad Wongso, Kel. Madurejo
 - openUntil: 21.00
@@ -808,6 +824,7 @@ Teknis:
 - Tailwind CSS.
 - Responsive-first (mobile 360px → tablet 768px → desktop 1024px+).
 - SEO lengkap (canonical: https://gubuk-kuliner.pages.dev).
+- Open Graph + Twitter Card dengan og-image 1200×630px agar muncul saat link dibagikan ke sosial media.
 - JSON-LD Restaurant/LocalBusiness.
 - Aksesibilitas WCAG AA.
 - Lighthouse target 95+.
