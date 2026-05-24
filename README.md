@@ -98,3 +98,12 @@ npm run preview
    - **Build Command**: `npm run build`
    - **Build Output Directory**: `dist`
 4. Klik **Save and Deploy**.
+
+---
+
+## 📜 Lisensi
+
+Proyek ini dilisensikan di bawah **AW Non-Commercial License 1.0** — lisensi sumber-terbuka yang mengizinkan penggunaan non-komersial. Penggunaan komersial memerlukan izin tertulis dari pemegang hak cipta.
+
+- [Lihat halaman lisensi](/license)
+- [Dokumen lisensi resmi](https://github.com/ahliweb/aw-non-commercial-license)
