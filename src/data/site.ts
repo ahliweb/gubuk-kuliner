@@ -42,6 +42,10 @@ export const siteData = {
   ],
   advantages: [
     {
+      title: "Bahan Halal Terjamin",
+      desc: "Semua menu kami menggunakan bahan-bahan halal yang aman untuk seluruh keluarga."
+    },
+    {
       title: "Harga Sangat Terjangkau",
       desc: "Nikmati hidangan lezat dan mengenyangkan mulai dari Rp15.000 saja."
     },
