@@ -56,7 +56,7 @@ gubuk-kuliner/
 │   │   ├── NutritionFacts.astro # Panel collapsible info nilai gizi
 │   │   ├── OrderSteps.astro     # 4 langkah pesan via WA
 │   │   ├── Gallery.astro        # Galeri 4 foto (lokal + Unsplash)
-│   │   ├── FAQ.astro            # Accordion 5 pertanyaan
+│   │   ├── FAQ.astro            # Accordion 5 pertanyaan (native details/summary)
 │   │   ├── WhatsAppButton.astro # Floating WA button + pulse + tooltip
 │   │   └── Footer.astro         # Info kontak, jam buka, Google Maps embed
 │   ├── pages/
@@ -208,11 +208,11 @@ export function getNutritionByMenuId(menuId: string): NutritionInfo | undefined;
 
 ### 8. FAQ (`src/components/FAQ.astro`)
 
-- 5 pertanyaan dalam accordion
-- Toggle: buka satu, tutup lainnya
-- Ikon caret berputar 180°
-- Aria attributes untuk aksesibilitas
-- Touch target minimal 48px
+- 5 pertanyaan dalam accordion menggunakan native `<details>` / `<summary>`
+- **Tanpa JavaScript** — bekerja bahkan jika JS dinonaktifkan
+- Animasi buka/tutup via CSS `max-height` transition
+- Ikon caret berputar 180° saat terbuka (`details[open] .faq-icon`)
+- Scoped CSS di dalam komponen Astro
 
 ### 9. WhatsAppButton (`src/components/WhatsAppButton.astro`)
 
@@ -286,9 +286,10 @@ export function getNutritionByMenuId(menuId: string): NutritionInfo | undefined;
 | Fungsi | Deskripsi |
 |---|---|
 | `setupMobileMenu()` | Toggle hamburger menu, swap icon, lock body scroll |
-| `setupFAQ()` | Accordion toggle, auto-close item lain, rotate caret |
 | `setupHeaderScroll()` | Shrink header padding + shadow saat scroll > 50px |
 | `setupScrollSpy()` | Highlight nav link aktif berdasarkan section yang terlihat |
+
+**Catatan:** FAQ accordion tidak lagi memerlukan JavaScript — menggunakan native `<details>`/`<summary>` HTML elements.
 
 ---
 
@@ -373,7 +374,8 @@ Semua komponen menggunakan pendekatan **mobile-first** dengan breakpoint Tailwin
 - Static site (Astro prerender default)
 - Tidak ada React/Vue/Svelte
 - Tailwind CSS v4 via Vite plugin (tree-shaking otomatis)
-- Vanilla JS minimal (142 baris)
+- Vanilla JS minimal (~100 baris, FAQ tanpa JS)
+- FAQ accordion menggunakan native `<details>`/`<summary>` (tidak butuh JS)
 - Gambar lazy loading (`loading="lazy"`)
 - Width/height pada semua gambar (mengurangi CLS)
 - Google Fonts dengan `preconnect`

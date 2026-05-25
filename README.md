@@ -18,9 +18,10 @@ Landing page responsif dan berkinerja tinggi untuk warung makan **Gubuk Kuliner*
    - PWA metadata (`site.webmanifest`) dan sitemap generator terintegrasi.
    - Skema terstruktur JSON-LD bertipe `Restaurant` / `LocalBusiness`.
 5. **Keamanan & Performa**:
-   - Skrip JavaScript minimal yang dimuat secara asinkron (*deferred*).
-   - Pengaturan header keamanan Cloudflare (`_headers`).
-   - Gambar CDN dioptimasi dengan *lazy loading* untuk mengurangi CLS (*Cumulative Layout Shift*).
+    - Skrip JavaScript minimal yang dimuat secara asinkron (*deferred*).
+    - FAQ accordion tanpa JavaScript (native HTML `<details>`/`<summary>`).
+    - Pengaturan header keamanan Cloudflare (`_headers`).
+    - Gambar CDN dioptimasi dengan *lazy loading* untuk mengurangi CLS (*Cumulative Layout Shift*).
 
 ---
 
@@ -53,7 +54,7 @@ gubuk-kuliner/
 │   │   ├── NutritionFacts.astro # Panel collapsible info nilai gizi
 │   │   ├── OrderSteps.astro # Alur pemesanan lewat WhatsApp
 │   │   ├── Gallery.astro    # Galeri ilustrasi makanan
-│   │   ├── FAQ.astro        # Accordion tanya-jawab interaktif
+│   │   ├── FAQ.astro        # Accordion tanya-jawab (native details/summary)
 │   │   ├── WhatsAppButton.astro # Floating shortcut WhatsApp
 │   │   └── Footer.astro     # Kontak, jam buka, & Google Maps embed
 │   ├── pages/
