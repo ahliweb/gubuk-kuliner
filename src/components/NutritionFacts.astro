@@ -1,0 +1,90 @@
+---
+import type { NutritionInfo } from '../data/nutrition';
+
+interface Props {
+  nutrition: NutritionInfo;
+}
+
+const { nutrition } = Astro.props;
+---
+
+<div class="mt-4 bg-brand-bg rounded-2xl border border-brand-secondary/10 overflow-hidden">
+  <!-- Header -->
+  <details class="group/nutrition">
+    <summary class="flex items-center justify-between px-5 py-3.5 cursor-pointer list-none hover:bg-brand-primary/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg rounded-t-2xl">
+      <div class="flex items-center gap-2.5">
+        <svg class="w-5 h-5 text-brand-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <span class="text-sm font-bold text-brand-text font-display">Info Nilai Gizi (Estimasi)</span>
+      </div>
+      <svg class="w-5 h-5 text-brand-muted transition-transform duration-300 group-open/nutrition:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </summary>
+
+    <!-- Content -->
+    <div class="px-5 pb-5 space-y-4">
+      <!-- Portion Info -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-secondary">Komposisi Per Porsi</h4>
+        <ul class="text-xs text-brand-muted space-y-1" role="list">
+          {nutrition.portion.map((item) => (
+            <li class="flex justify-between">
+              <span>{item.ingredient}</span>
+              <span class="font-semibold text-brand-text">{item.weight}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-brand-secondary/20"></div>
+
+      <!-- Nutrition Values Grid -->
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-secondary">Nilai Gizi Estimasi</h4>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <!-- Energy -->
+          <div class="bg-brand-surface rounded-xl p-3 text-center border border-brand-primary/20">
+            <div class="text-xs text-brand-muted mb-1">Energi</div>
+            <div class="text-lg font-extrabold text-brand-text font-display">{nutrition.values.energy}</div>
+          </div>
+          <!-- Protein -->
+          <div class="bg-brand-surface rounded-xl p-3 text-center border border-brand-primary/20">
+            <div class="text-xs text-brand-muted mb-1">Protein</div>
+            <div class="text-lg font-extrabold text-brand-text font-display">{nutrition.values.protein}</div>
+          </div>
+          <!-- Fat -->
+          <div class="bg-brand-surface rounded-xl p-3 text-center border border-brand-primary/20">
+            <div class="text-xs text-brand-muted mb-1">Lemak</div>
+            <div class="text-lg font-extrabold text-brand-text font-display">{nutrition.values.fat}</div>
+          </div>
+          <!-- Carbohydrate -->
+          <div class="bg-brand-surface rounded-xl p-3 text-center border border-brand-primary/20">
+            <div class="text-xs text-brand-muted mb-1">Karbohidrat</div>
+            <div class="text-lg font-extrabold text-brand-text font-display">{nutrition.values.carbohydrate}</div>
+          </div>
+          <!-- Fiber -->
+          <div class="bg-brand-surface rounded-xl p-3 text-center border border-brand-primary/20">
+            <div class="text-xs text-brand-muted mb-1">Serat</div>
+            <div class="text-lg font-extrabold text-brand-text font-display">{nutrition.values.fiber}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-brand-secondary/20"></div>
+
+      <!-- Disclaimer -->
+      <div class="space-y-2">
+        <p class="text-xs text-brand-muted leading-relaxed italic">
+          {nutrition.disclaimer}
+        </p>
+        <p class="text-xs text-brand-secondary/70">
+          {nutrition.dataSource}
+        </p>
+      </div>
+    </div>
+  </details>
+</div>

@@ -129,3 +129,26 @@ body {
   background-size: 40px 40px;
   background-image: radial-gradient(circle, rgba(122, 74, 46, 0.05) 1.5px, transparent 1.5px);
 }
+
+/* Nutrition Facts styling */
+details[open] summary ~ * {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nutrition value card hover effect */
+.grid > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 180, 62, 0.15);
+  transition: all 0.2s ease;
+}

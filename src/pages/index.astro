@@ -3,12 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import MenuCard from '../components/MenuCard.astro';
+import NutritionFacts from '../components/NutritionFacts.astro';
 import OrderSteps from '../components/OrderSteps.astro';
 import Gallery from '../components/Gallery.astro';
 import FAQ from '../components/FAQ.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 import { siteData } from '../data/site';
+import { getNutritionByMenuId } from '../data/nutrition';
 ---
 
 <BaseLayout>
@@ -39,16 +41,22 @@ import { siteData } from '../data/site';
 
       <!-- Menu Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {siteData.menus.map((menu) => (
-          <MenuCard 
-            title={menu.title}
-            description={menu.description}
-            price={menu.price}
-            image={menu.image}
-            badge={menu.badge}
-            waLink={menu.waLink}
-          />
-        ))}
+        {siteData.menus.map((menu) => {
+          const nutrition = getNutritionByMenuId(menu.id);
+          return (
+            <div class="flex flex-col">
+              <MenuCard 
+                title={menu.title}
+                description={menu.description}
+                price={menu.price}
+                image={menu.image}
+                badge={menu.badge}
+                waLink={menu.waLink}
+              />
+              {nutrition && <NutritionFacts nutrition={nutrition} />}
+            </div>
+          );
+        })}
       </div>
 
     </div>
