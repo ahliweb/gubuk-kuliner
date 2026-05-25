@@ -1,15 +1,17 @@
 # Gubuk Kuliner Landing Page
 
-Landing page responsif dan berkinerja tinggi untuk warung makan **Gubuk Kuliner** yang berlokasi di Jl. Ahmad Wongso, Kel. Madurejo. Dibuat menggunakan **Astro v5+**, **Tailwind CSS v4**, dan **Vanilla JS minimal** tanpa library eksternal yang berat untuk performa optimal (Lighthouse score 95+).
+Landing page responsif dan berkinerja tinggi untuk warung makan **Gubuk Kuliner** yang berlokasi di Jl. Ahmad Wongso, Kel. Madurejo. Dibuat menggunakan **Astro v6**, **Tailwind CSS v4**, dan **Vanilla JS minimal** tanpa library eksternal yang berat untuk performa optimal (Lighthouse score 95+).
 
 ## 🚀 Fitur Utama
 1. **Identitas Visual Selaras Flyer**: Warna kuning mustard, cokelat, krem, dan putih hangat dengan doodle lingkaran dan tanda panah bergaya tulis tangan.
 2. **Kesesuaian Target Konversi**: Tombol pintasan WhatsApp yang menonjol di Header, Hero, dan Floating Button di kanan bawah.
 3. **Informasi Lengkap Terstruktur**:
-   - Menu unggulan (*Nasi Telur Dadar Sambal Cumi/Teri* dan *Tahu Tek-Tek*) dengan harga mulai Rp15.000+.
-   - Jam operasional jelas (buka s/d 21.00 WIB).
-   - Info layanan (makan di tempat, drive-thru, dan pesan via WA dengan skema uang muka/DP).
-   - Peta lokasi interaktif (iframe responsif) dan rute Google Maps.
+    - Menu unggulan (*Nasi Telur Dadar Sambal Cumi/Teri* dan *Tahu Tek-Tek*) dengan harga mulai Rp15.000+.
+    - **Bahan halal terjamin** untuk semua menu.
+    - **Estimasi nilai gizi** per porsi (energi, protein, lemak, karbohidrat, serat) berdasarkan TKPI.
+    - Jam operasional jelas (buka s/d 21.00 WIB).
+    - Info layanan (makan di tempat, drive-thru, dan pesan via WA dengan skema uang muka/DP).
+    - Peta lokasi interaktif (iframe responsif) dan rute Google Maps.
 4. **Optimasi SEO & Aksesibilitas**:
    - Struktur heading hierarkis (satu H1).
    - Teks alternatif gambar lengkap untuk pembaca layar.
@@ -27,6 +29,7 @@ Landing page responsif dan berkinerja tinggi untuk warung makan **Gubuk Kuliner*
 gubuk-kuliner/
 ├── public/
 │   ├── favicon.svg          # Favicon vektor GK
+│   ├── favicon.ico          # Favicon fallback
 │   ├── site.webmanifest     # Manifest PWA
 │   ├── robots.txt           # File instruksi crawler
 │   ├── sitemap.xml          # Sitemap halaman
@@ -34,30 +37,35 @@ gubuk-kuliner/
 │   └── assets/
 │       └── img/
 │           ├── logo.svg     # Logo vektor dengan bentuk organik
-│           └── og-image.svg # Preview gambar media sosial
+│           ├── og-image.svg # Preview gambar media sosial
+│           ├── nasi_telur_dadar.png  # Foto menu utama
+│           └── tahu_tek_tek.png      # Foto menu utama
 ├── src/
 │   ├── data/
-│   │   └── site.ts          # Central data konfigurasi (WA, Menu, Alamat)
+│   │   ├── site.ts          # Central data konfigurasi (WA, Menu, Alamat)
+│   │   └── nutrition.ts     # Estimasi nilai gizi per menu
 │   ├── layouts/
 │   │   └── BaseLayout.astro # HTML wrapper utama & SEO metadata
 │   ├── components/
 │   │   ├── Header.astro     # Sticky navigation & menu mobile
 │   │   ├── Hero.astro       # Bagian utama penawaran & tumpukan foto visual
 │   │   ├── MenuCard.astro   # Card menu dengan harga & CTA pesanan
+│   │   ├── NutritionFacts.astro # Panel collapsible info nilai gizi
 │   │   ├── OrderSteps.astro # Alur pemesanan lewat WhatsApp
 │   │   ├── Gallery.astro    # Galeri ilustrasi makanan
 │   │   ├── FAQ.astro        # Accordion tanya-jawab interaktif
 │   │   ├── WhatsAppButton.astro # Floating shortcut WhatsApp
 │   │   └── Footer.astro     # Kontak, jam buka, & Google Maps embed
 │   ├── pages/
-│   │   └── index.astro      # Halaman utama kompilasi komponen
+│   │   ├── index.astro      # Halaman utama kompilasi komponen
+│   │   └── license.astro    # Halaman informasi lisensi
 │   ├── styles/
 │   │   └── global.css       # Custom styling CSS & Tailwind v4 themes
 │   └── scripts/
 │       └── main.js          # Logika interaktif Vanilla JS (FAQ, Burger menu)
 ├── astro.config.mjs
-├── tailwind.config.mjs
 ├── package.json
+├── LICENSE                  # AW Non-Commercial License 1.0
 └── README.md
 ```
 
@@ -107,3 +115,9 @@ Proyek ini dilisensikan di bawah **AW Non-Commercial License 1.0** — lisensi s
 
 - [Lihat halaman lisensi](/license)
 - [Dokumen lisensi resmi](https://github.com/ahliweb/gubuk-kuliner?tab=License-1-ov-file)
+
+---
+
+## 🤝 Kolaborasi
+
+Website ini merupakan hasil kolaborasi **CSR (Corporate Social Responsibility)** dari [**ahliweb.com**](https://ahliweb.com) untuk mendukung UMKM kuliner lokal.

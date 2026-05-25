@@ -21,6 +21,8 @@ Website **landing page Gubuk Kuliner** berbasis **Astro v6 + Tailwind CSS v4 + V
 | Jam Operasional | Buka setiap hari s/d pukul 21.00 WIB                        |
 | Harga           | Mulai Rp15.000+                                             |
 | Layanan         | Makan di tempat, drive-thru, pesan via WA dengan DP dulu    |
+| Bahan           | Halal terjamin untuk semua menu                               |
+| Kolaborasi      | CSR oleh [ahliweb.com](https://ahliweb.com)                   |
 
 ---
 
@@ -43,20 +45,23 @@ gubuk-kuliner/
 │           └── tahu_tek_tek.png      # Foto menu utama
 ├── src/
 │   ├── data/
-│   │   └── site.ts              # Central data: brand, WA, menu, FAQ, dll.
+│   │   ├── site.ts              # Central data: brand, WA, menu, FAQ, dll.
+│   │   └── nutrition.ts         # Data estimasi nilai gizi per menu
 │   ├── layouts/
 │   │   └── BaseLayout.astro     # HTML wrapper, SEO, OG, JSON-LD, fonts
 │   ├── components/
 │   │   ├── Header.astro         # Sticky nav + mobile menu + badge buka
 │   │   ├── Hero.astro           # Headline, badges, CTA, tumpukan foto
 │   │   ├── MenuCard.astro       # Card menu: gambar, badge, harga, WA
+│   │   ├── NutritionFacts.astro # Panel collapsible info nilai gizi
 │   │   ├── OrderSteps.astro     # 4 langkah pesan via WA
 │   │   ├── Gallery.astro        # Galeri 4 foto (lokal + Unsplash)
 │   │   ├── FAQ.astro            # Accordion 5 pertanyaan
 │   │   ├── WhatsAppButton.astro # Floating WA button + pulse + tooltip
 │   │   └── Footer.astro         # Info kontak, jam buka, Google Maps embed
 │   ├── pages/
-│   │   └── index.astro          # Halaman utama (kompilasi semua komponen)
+│   │   ├── index.astro          # Halaman utama (kompilasi semua komponen)
+│   │   └── license.astro        # Halaman informasi lisensi
 │   ├── styles/
 │   │   └── global.css           # Tailwind v4 @theme, animasi, custom CSS
 │   └── scripts/
@@ -64,6 +69,7 @@ gubuk-kuliner/
 ├── astro.config.mjs             # Konfigurasi Astro + Tailwind vite plugin
 ├── package.json                 # astro, tailwindcss, @tailwindcss/vite
 ├── tsconfig.json                # TypeScript config (strict)
+├── LICENSE                      # AW Non-Commercial License 1.0
 ├── README.md                    # Dokumentasi penggunaan
 └── docs/
     └── prompt.md                # File ini (dokumentasi proyek)
@@ -90,11 +96,49 @@ export const siteData = {
   seoTitle: "Gubuk Kuliner Madurejo - Nasi Telur Dadar, Sambal Cumi/Teri & Tahu Tek-Tek",
   seoDescription: "Gubuk Kuliner di Jl. Ahmad Wongso, Kel. Madurejo. Menu rumahan mulai Rp15.000+, buka sampai 21.00, bisa makan di tempat, drive-thru, dan pesan via WhatsApp dengan DP dulu.",
   menus: [ /* 3 menu: telur-dadar, tahu-tek, paket-hemat */ ],
-  advantages: [ /* 5 keunggulan */ ],
+  advantages: [ /* 6 keunggulan: halal, harga, jam buka, tempat, drive-thru, WA */ ],
   steps: [ /* 4 langkah pesan */ ],
   faqs: [ /* 5 FAQ */ ]
 };
 ```
+
+---
+
+## Data Nutrisi (`src/data/nutrition.ts`)
+
+Data estimasi nilai gizi untuk menu utama, berdasarkan **Tabel Komposisi Pangan Indonesia (TKPI)**:
+
+```ts
+export interface NutritionInfo {
+  menuId: string;          // ID menu (cocok dengan siteData.menus[].id)
+  portion: {               // Komposisi per porsi
+    ingredient: string;    // Nama bahan
+    weight: string;        // Berat dalam gram
+  }[];
+  values: {
+    energy: string;        // Energi (kkal)
+    protein: string;       // Protein (g)
+    fat: string;           // Lemak (g)
+    carbohydrate: string;  // Karbohidrat (g)
+    fiber: string;         // Serat (g)
+  };
+  disclaimer: string;      // Disclaimer estimasi
+  dataSource: string;      // Sumber referensi data
+}
+
+export const nutritionData: NutritionInfo[] = [
+  // telur-dadar: ~610 kkal, 23g protein, 23g lemak, 79g karbo, 1g serat
+  // tahu-tek: ~590 kkal, 26g protein, 28g lemak, 64g karbo, 5g serat
+];
+
+export function getNutritionByMenuId(menuId: string): NutritionInfo | undefined;
+```
+
+**Catatan penting:**
+- Nilai gizi bersifat **estimasi**, bukan hasil laboratorium
+- Disclaimer ditampilkan di setiap panel nutrisi
+- Sumber acuan: TKPI / Data Komposisi Pangan Indonesia
+- Menu tanpa data nutrisi (mis. paket-hemat) tidak menampilkan panel
 
 ---
 
@@ -124,7 +168,7 @@ export const siteData = {
 - Layout 2 kolom: teks (kiri) + visual tumpukan foto (kanan)
 - Badge tagline "Rasa Rumahan, Harga Ramah"
 - Headline dengan highlight harga
-- 5 badge: harga, jam buka, makan di tempat, drive-thru, pesan WA+DP
+- 6 badge: **bahan halal**, harga, jam buka, makan di tempat, drive-thru, pesan WA+DP
 - 2 CTA: "Pesan Sekarang via WA" + "Lihat Menu Lengkap"
 - Visual: 2 foto menu (nasi telur dadar + tahu tek-tek) dalam lingkaran dengan scribble SVG border, label melayang, panah dekoratif
 - Background blob organik dengan animasi float
@@ -135,7 +179,19 @@ export const siteData = {
 - Judul, deskripsi, tombol "Pesan via WhatsApp" per menu
 - Hover: scale, shadow, warna berubah
 
-### 5. OrderSteps (`src/components/OrderSteps.astro`)
+### 5. NutritionFacts (`src/components/NutritionFacts.astro`)
+
+- Panel collapsible menggunakan `<details>` / `<summary>` (tanpa JS)
+- Props: `{ nutrition: NutritionInfo }`
+- **Komposisi Per Porsi**: daftar bahan + berat (flex justify-between)
+- **Nilai Gizi Estimasi**: grid 2 kolom (mobile) → 3 kolom (sm+) dengan card per nutrisi
+  - Energi, Protein, Lemak, Karbohidrat, Serat
+- **Disclaimer**: teks italic tentang estimasi, bukan hasil lab
+- **Sumber data**: referensi TKPI
+- Animasi slide-down saat dibuka (`@keyframes slideDown`)
+- Aksesibel: `focus-visible` ring, semantic HTML
+
+### 6. OrderSteps (`src/components/OrderSteps.astro`)
 
 - 4 langkah: Klik WA → Pilih Menu → Bayar DP → Siap Disantap
 - Grid responsif: 1 kolom (mobile) → 2 kolom (tablet) → 4 kolom (desktop)
@@ -143,14 +199,14 @@ export const siteData = {
 - Panah bounce di mobile antar langkah
 - Tombol WA di bawah
 
-### 6. Gallery (`src/components/Gallery.astro`)
+### 7. Gallery (`src/components/Gallery.astro`)
 
 - 4 gambar: 2 lokal (`nasi_telur_dadar.png`, `tahu_tek_tek.png`) + 2 Unsplash
 - Grid: 1 → 2 → 4 kolom
 - Hover overlay dengan gradient + judul
 - Disclaimer: "Beberapa gambar adalah ilustrasi sajian"
 
-### 7. FAQ (`src/components/FAQ.astro`)
+### 8. FAQ (`src/components/FAQ.astro`)
 
 - 5 pertanyaan dalam accordion
 - Toggle: buka satu, tutup lainnya
@@ -158,21 +214,30 @@ export const siteData = {
 - Aria attributes untuk aksesibilitas
 - Touch target minimal 48px
 
-### 8. WhatsAppButton (`src/components/WhatsAppButton.astro`)
+### 9. WhatsAppButton (`src/components/WhatsAppButton.astro`)
 
 - Fixed bottom-right (56×56px)
 - Warna emerald-500 dengan pulse ring animation
 - Tooltip "Pesan Cepat via WA" muncul saat hover
 - Link ke `siteData.waLink`
 
-### 9. Footer (`src/components/Footer.astro`)
+### 10. Footer (`src/components/Footer.astro`)
 
 - 2 kolom: info kontak (kiri) + peta (kanan)
 - Logo (filter brightness untuk kontras di background gelap)
 - Alamat, nomor WA, jam operasional dengan ikon
 - Tombol "Buka Google Maps" → `siteData.mapsUrl`
 - **Google Maps embed**: iframe responsif `aspect-ratio: 16/10` dengan `siteData.mapsEmbedUrl`
-- Copyright + link navigasi
+- **Badge halal** pada deskripsi warung (highlight emerald)
+- Copyright + link CSR **ahliweb.com** + link lisensi + navigasi
+
+### 11. License Page (`src/pages/license.astro`)
+
+- Halaman informasi lisensi **AW Non-Commercial License 1.0**
+- Menggunakan BaseLayout dengan title kustom
+- Daftar penggunaan yang diizinkan (non-komersial) dan dilarang (komersial)
+- Link ke `commercial@ahliweb.com` untuk lisensi komersial
+- Copyright (c) 2026 Unggul
 
 ---
 
@@ -203,6 +268,7 @@ export const siteData = {
 | `animate-float` | Float lembut 4s untuk blob dekoratif |
 | `animate-float-reverse` | Float lembut 4.5s arah berlawanan |
 | `blob-organic-1/2/3` | Border-radius organik untuk bentuk tidak beraturan |
+| `slideDown` | Animasi buka panel nutrition facts |
 
 ### Fitur CSS Lainnya
 
@@ -354,3 +420,8 @@ npm run preview      # Preview build produksi
 - Gambar `og-image.svg` saat ini masih SVG. Untuk kompatibilitas penuh dengan WhatsApp/Facebook/LinkedIn, sebaiknya diganti ke format **PNG 1200×630px**.
 - Foto menu (`nasi_telur_dadar.png`, `tahu_tek_tek.png`) sudah lokal. Foto galeri lainnya dari Unsplash (ilustrasi).
 - Semua konten bisa diedit melalui `src/data/site.ts` tanpa menyentuh komponen.
+- Data nutrisi disimpan terpisah di `src/data/nutrition.ts` agar mudah diupdate tanpa mengubah komponen.
+- Nilai gizi bersifat **estimasi** berdasarkan TKPI, bukan hasil analisis laboratorium.
+- Semua menu menggunakan **bahan halal** — informasi ditampilkan di Hero badge dan keunggulan pertama.
+- Website ini merupakan hasil **kolaborasi CSR** dari [ahliweb.com](https://ahliweb.com).
+- Tailwind CSS v4 menggunakan konfigurasi berbasis CSS (`@theme` di `global.css`), tidak ada file `tailwind.config.mjs`.
