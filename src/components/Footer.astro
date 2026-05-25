@@ -78,20 +78,43 @@ import { siteData } from '../data/site';
         </div>
       </div>
 
-      <!-- Map Embed Column -->
+      <!-- Map & Storefront Photo Column -->
       <div class="lg:col-span-7 space-y-4">
-        <h3 class="text-xl font-bold text-brand-primary font-display">Peta Interaktif</h3>
+        <h3 class="text-xl font-bold text-brand-primary font-display">Peta &amp; Tampilan Warung</h3>
         
-        <!-- Google Map Embed Wrapper -->
-        <div class="relative w-full overflow-hidden rounded-3xl border-2 border-brand-secondary/30 shadow-lg" style="aspect-ratio: 16/10;">
-          <iframe
-            src={siteData.mapsEmbedUrl}
-            class="absolute inset-0 h-full w-full border-0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Lokasi Warung Gubuk Kuliner"
-          ></iframe>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+          <!-- Google Map Embed Wrapper -->
+          <div class="md:col-span-7 relative overflow-hidden rounded-3xl border-2 border-brand-secondary/30 shadow-lg min-h-[260px] md:min-h-[320px] lg:min-h-[350px]">
+            <iframe
+              src={siteData.mapsEmbedUrl}
+              class="absolute inset-0 h-full w-full border-0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Lokasi Warung Gubuk Kuliner"
+            ></iframe>
+          </div>
+          
+          <!-- Storefront Photo Card -->
+          <div class="md:col-span-5 relative group overflow-hidden rounded-3xl border-2 border-brand-secondary/30 shadow-lg bg-brand-surface min-h-[260px] md:min-h-[320px] lg:min-h-[350px]">
+            <img 
+              src="/assets/img/gubuk_kuliner_stall.jpg" 
+              alt="Rombong Roda Gubuk Kuliner" 
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+            />
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-text via-brand-text/30 to-transparent flex flex-col justify-end p-5">
+              <span class="inline-block self-start px-2 py-0.5 rounded bg-brand-primary text-brand-text text-[9px] font-extrabold uppercase tracking-wider mb-1.5">
+                Warung Fisik
+              </span>
+              <h4 class="text-brand-bg font-extrabold text-base font-display leading-tight">
+                Rombong Gubuk Kuliner
+              </h4>
+              <p class="text-brand-bg/85 text-xs leading-normal mt-1">
+                Temukan rombong kuning kami di pinggir jalan untuk dine-in atau drive-thru.
+              </p>
+            </div>
+          </div>
         </div>
         
         <p class="text-xs text-brand-bg/70 leading-relaxed italic text-right">
