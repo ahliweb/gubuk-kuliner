@@ -71,7 +71,12 @@ gubuk-kuliner/
 ├── package.json                 # astro, tailwindcss, @tailwindcss/vite
 ├── tsconfig.json                # TypeScript config (strict)
 ├── LICENSE                      # AW Non-Commercial License 1.0
+├── AGENTS.md                    # Panduan AI Engineer (wajib dibaca)
+├── opencode.json                # Konfigurasi OpenCode + skill
 ├── README.md                    # Dokumentasi penggunaan
+├── .opencode/
+│   └── skills/
+│       └── landing-page-umkm.md # Skill template untuk proyek serupa
 └── docs/
     └── prompt.md                # File ini (dokumentasi proyek)
 ```
@@ -428,3 +433,6 @@ npm run preview      # Preview build produksi
 - Semua menu menggunakan **bahan halal** — informasi ditampilkan di Hero badge dan keunggulan pertama.
 - Website ini merupakan hasil **kolaborasi CSR** dari [ahliweb.com](https://ahliweb.com).
 - Tailwind CSS v4 menggunakan konfigurasi berbasis CSS (`@theme` di `global.css`), tidak ada file `tailwind.config.mjs`.
+- **AGENTS.md** berisi panduan lengkap untuk AI Engineer — baca sebelum mulai coding.
+- **Skill OpenCode** (`.opencode/skills/landing-page-umkm.md`) bisa digunakan sebagai template untuk membuat website UMKM serupa.
+- **opencode.json** mendaftarkan skill agar AI assistant bisa mengaksesnya otomatis.

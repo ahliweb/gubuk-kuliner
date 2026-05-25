@@ -68,6 +68,8 @@ gubuk-kuliner/
 ├── astro.config.mjs
 ├── package.json
 ├── LICENSE                  # AW Non-Commercial License 1.0
+├── AGENTS.md                # Panduan AI Engineer
+├── opencode.json            # Konfigurasi OpenCode + skill
 └── README.md
 ```
 
@@ -123,3 +125,11 @@ Proyek ini dilisensikan di bawah **AW Non-Commercial License 1.0** — lisensi s
 ## 🤝 Kolaborasi
 
 Website ini merupakan hasil kolaborasi **CSR (Corporate Social Responsibility)** dari [**ahliweb.com**](https://ahliweb.com) untuk mendukung UMKM kuliner lokal.
+
+---
+
+## 🤖 Panduan AI Engineer
+
+- **AGENTS.md** — Panduan lengkap untuk AI Engineer yang mengerjakan proyek ini
+- **opencode.json** — Konfigurasi skill OpenCode untuk template website UMKM serupa
+- **docs/prompt.md** — Dokumentasi teknis lengkap arsitektur dan komponen
