@@ -21,47 +21,58 @@ import { siteData } from '../data/site';
       </p>
     </div>
 
-    <!-- Accordion List -->
+    <!-- Accordion List (Native details/summary - no JS required) -->
     <div class="space-y-4">
       {siteData.faqs.map((faq, index) => (
-        <div class="faq-item group border border-brand-secondary/15 rounded-2xl bg-brand-bg/25 overflow-hidden transition-all duration-300">
+        <details class="faq-item group border border-brand-secondary/15 rounded-2xl bg-brand-bg/25 overflow-hidden transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
           
           <!-- Trigger Header -->
-          <h3>
-            <button
-              type="button"
-              class="faq-trigger flex items-center justify-between w-full p-6 text-left font-bold text-base sm:text-lg text-brand-text hover:text-brand-secondary focus:outline-none transition-colors duration-300"
-              aria-expanded="false"
-              aria-controls={`faq-answer-${index}`}
-              id={`faq-btn-${index}`}
-              style="min-height: 48px;"
-            >
-              <span>{faq.q}</span>
-              
-              <!-- Caret Icon -->
-              <span class="faq-icon flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full bg-brand-primary/10 text-brand-secondary group-hover:bg-brand-primary/20 transition-all duration-300">
-                <svg class="w-4 h-4 transition-transform duration-350 fill-none stroke-current stroke-[2.5]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </button>
-          </h3>
+          <summary
+            class="faq-trigger flex items-center justify-between w-full p-6 text-left font-bold text-base sm:text-lg text-brand-text hover:text-brand-secondary focus:outline-none cursor-pointer list-none transition-colors duration-300"
+            style="min-height: 48px;"
+          >
+            <span>{faq.q}</span>
+            
+            <!-- Caret Icon -->
+            <span class="faq-icon flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full bg-brand-primary/10 text-brand-secondary group-hover:bg-brand-primary/20 transition-all duration-300">
+              <svg class="w-4 h-4 transition-transform duration-350 fill-none stroke-current stroke-[2.5]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
 
           <!-- Collapse Content Panel -->
           <div
-            id={`faq-answer-${index}`}
-            class="faq-content hidden"
-            role="region"
-            aria-labelledby={`faq-btn-${index}`}
+            class="faq-content"
           >
             <div class="px-6 pb-6 pt-1 text-sm sm:text-base text-brand-muted leading-relaxed border-t border-brand-secondary/5 bg-brand-surface/40">
               {faq.a}
             </div>
           </div>
 
-        </div>
+        </details>
       ))}
     </div>
 
   </div>
 </section>
+
+<style>
+  /* Rotate caret when details is open */
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Smooth open/close animation */
+  details .faq-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+  }
+
+  details[open] .faq-content {
+    max-height: 500px;
+    opacity: 1;
+  }
+</style>

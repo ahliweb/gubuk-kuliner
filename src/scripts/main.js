@@ -1,7 +1,6 @@
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
   setupMobileMenu();
-  setupFAQ();
   setupHeaderScroll();
   setupScrollSpy();
 });
@@ -45,49 +44,6 @@ function setupMobileMenu() {
         closeIcon.classList.add('hidden');
       }
       document.body.classList.remove('overflow-hidden');
-    });
-  });
-}
-
-/**
- * Accessible FAQ Accordion Toggle
- */
-function setupFAQ() {
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-trigger');
-    const content = item.querySelector('.faq-content');
-    const icon = item.querySelector('.faq-icon');
-
-    if (!button || !content || !icon) return;
-
-    button.addEventListener('click', () => {
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-      
-      // Close other items (optional, but clean)
-      faqItems.forEach(otherItem => {
-        const otherButton = otherItem.querySelector('.faq-trigger');
-        const otherContent = otherItem.querySelector('.faq-content');
-        const otherIcon = otherItem.querySelector('.faq-icon');
-        
-        if (otherButton && otherContent && otherIcon && otherButton !== button) {
-          otherButton.setAttribute('aria-expanded', 'false');
-          otherContent.classList.add('hidden');
-          otherIcon.style.transform = 'rotate(0deg)';
-        }
-      });
-
-      // Toggle current item
-      button.setAttribute('aria-expanded', !isExpanded);
-      content.classList.toggle('hidden');
-      
-      // Rotate icon
-      if (!isExpanded) {
-        icon.style.transform = 'rotate(180deg)';
-      } else {
-        icon.style.transform = 'rotate(0deg)';
-      }
     });
   });
 }
