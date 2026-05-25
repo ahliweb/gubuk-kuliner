@@ -1,50 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;family=Outfit:wght@600;800&amp;family=Plus+Jakarta+Sans:wght@500&amp;display=swap');
-      .bg { fill: #FFF9ED; }
-      .blob-large { fill: #D9B43E; }
-      .text-brand-1 { font-family: 'Caveat', cursive; font-size: 110px; fill: #3B2418; font-weight: 700; }
-      .text-brand-2 { font-family: 'Caveat', cursive; font-size: 130px; fill: #3B2418; font-weight: 700; }
-      .underline { stroke: #3B2418; stroke-width: 8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-      .title { font-family: 'Outfit', sans-serif; font-size: 48px; fill: #7A4A2E; font-weight: 800; }
-      .desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; fill: #80604A; font-weight: 500; }
-      .badge { fill: #7A4A2E; rx: 12px; }
-      .badge-text { font-family: 'Outfit', sans-serif; font-size: 24px; fill: #FFF9ED; font-weight: 600; text-anchor: middle; }
-    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3B2418" flood-opacity="0.15"/>
+    </filter>
   </defs>
   
   <!-- Base Background -->
-  <rect width="1200" height="630" class="bg" />
+  <rect width="1200" height="630" fill="#FFF9ED" />
   
   <!-- Large Yellow Blobs in corners -->
-  <path class="blob-large" d="M -50,-50 C 100,-100 250,50 300,200 C 350,350 150,500 -50,450 Z" />
-  <path class="blob-large" d="M 1250,680 C 1100,680 950,500 1000,350 C 1050,200 1150,100 1250,150 Z" opacity="0.8" />
+  <path fill="#D9B43E" d="M -50,-50 C 100,-100 250,50 300,200 C 350,350 150,500 -50,450 Z" />
+  <path fill="#D9B43E" d="M 1250,680 C 1100,680 950,500 1000,350 C 1050,200 1150,100 1250,150 Z" opacity="0.7" />
   
-  <!-- Brand Logo inside OG image -->
-  <g transform="translate(100, 100)">
-    <path class="blob-large" d="M 10,70 C 5,30 45,5 90,10 C 140,15 170,40 210,25 C 260,10 320,15 350,45 C 380,75 400,110 375,140 C 350,170 290,155 250,160 C 200,165 150,180 100,165 C 50,150 35,100 10,70 Z" />
-    <text x="50" y="75" class="text-brand-1">Gubuk</text>
-    <text x="50" y="135" class="text-brand-2">Kuliner</text>
-    <path class="underline" d="M 45,150 Q 115,145 185,153 T 325,145" />
-    <path class="underline" d="M 55,160 Q 125,155 195,163 T 315,155" />
+  <!-- Small decorative blob -->
+  <path fill="#D9B43E" opacity="0.3" d="M 800,550 C 750,500 700,450 720,400 C 740,350 800,320 850,350 C 900,380 920,430 880,480 C 850,520 830,570 800,550 Z" />
+  
+  <!-- Brand Logo Area -->
+  <g transform="translate(80, 80)">
+    <!-- Blob background for logo -->
+    <path fill="#D9B43E" d="M 10,80 C 5,30 50,5 100,10 C 150,15 180,45 220,30 C 270,15 330,20 360,50 C 390,80 410,120 385,150 C 360,180 300,165 260,170 C 210,175 160,190 110,175 C 60,160 35,110 10,80 Z" />
+    
+    <!-- Brand Name -->
+    <text x="55" y="80" font-family="'Georgia', 'Times New Roman', serif" font-size="52" fill="#3B2418" font-weight="bold" font-style="italic">Gubuk</text>
+    <text x="55" y="135" font-family="'Georgia', 'Times New Roman', serif" font-size="62" fill="#3B2418" font-weight="bold" font-style="italic">Kuliner</text>
+    
+    <!-- Wavy Underlines -->
+    <path d="M 50,148 Q 110,142 170,150 T 290,145" stroke="#3B2418" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 55,158 Q 115,152 175,160 T 280,155" stroke="#3B2418" stroke-width="2" fill="none" stroke-linecap="round"/>
   </g>
   
-  <!-- Promotion Info on the Right -->
-  <g transform="translate(520, 150)">
-    <text x="0" y="50" class="title">Menu Rumahan Lezat &amp; Nikmat</text>
-    <text x="0" y="110" class="desc">Nasi Telur Dadar Sambal Cumi/Teri &amp; Tahu Tek-Tek</text>
-    <text x="0" y="160" class="desc">Mulai Rp15.000+ • Buka sampai 21.00</text>
-    <text x="0" y="210" class="desc">Layanan Makan di Tempat &amp; Drive-Thru</text>
+  <!-- Menu Info Section -->
+  <g transform="translate(520, 130)">
+    <!-- Title -->
+    <text x="0" y="0" font-family="Arial, Helvetica, sans-serif" font-size="44" fill="#7A4A2E" font-weight="bold">Menu Rumahan Lezat &amp; Nikmat</text>
+    
+    <!-- Menu Items -->
+    <text x="0" y="60" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#80604A">Nasi Telur Dadar Sambal Cumi/Teri</text>
+    <text x="0" y="95" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#80604A">&amp; Tahu Tek-Tek</text>
+    
+    <!-- Price & Hours -->
+    <text x="0" y="150" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#3B2418" font-weight="bold">Mulai Rp15.000+  •  Buka s/d 21.00 WIB</text>
+    
+    <!-- Services -->
+    <text x="0" y="195" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#80604A">✅ Bahan Halal  •  🍽️ Makan di Tempat  •  🚗 Drive-Thru</text>
     
     <!-- CTA Badges -->
-    <g transform="translate(0, 270)">
-      <rect x="0" y="0" width="300" height="60" class="badge" />
-      <text x="150" y="38" class="badge-text">Pesan via WhatsApp</text>
+    <g transform="translate(0, 240)">
+      <!-- WhatsApp Badge -->
+      <rect x="0" y="0" width="300" height="56" rx="28" fill="#7A4A2E" filter="url(#shadow)"/>
+      <text x="150" y="36" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#FFF9ED" font-weight="bold" text-anchor="middle">📱 Pesan via WhatsApp</text>
     </g>
-    <g transform="translate(320, 270)">
-      <rect x="0" y="0" width="220" height="60" class="badge" fill="#D9B43E" />
-      <text x="110" y="38" class="badge-text" fill="#3B2418">Mulai Rp15.000+</text>
+    
+    <!-- Price Badge -->
+    <g transform="translate(320, 240)">
+      <rect x="0" y="0" width="220" height="56" rx="28" fill="#D9B43E" filter="url(#shadow)"/>
+      <text x="110" y="36" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#3B2418" font-weight="bold" text-anchor="middle">💵 Mulai Rp15.000+</text>
     </g>
   </g>
+  
+  <!-- Bottom decorative line -->
+  <path d="M 80,580 Q 300,570 500,585 T 900,575 T 1120,580" stroke="#D9B43E" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.5"/>
+  
+  <!-- Small text at bottom -->
+  <text x="600" y="610" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#80604A" text-anchor="middle" opacity="0.7">Jl. Ahmad Wongso, Kel. Madurejo, Kotawaringin Barat, Kalteng</text>
 </svg>

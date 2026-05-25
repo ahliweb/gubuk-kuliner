@@ -38,7 +38,8 @@ gubuk-kuliner/
 │   └── assets/
 │       └── img/
 │           ├── logo.svg     # Logo vektor dengan bentuk organik
-│           ├── og-image.svg # Preview gambar media sosial
+│           ├── og-image.svg     # Source SVG untuk OG image
+│           ├── og-image.png     # OG image 1200x630 (PNG untuk sosial media)
 │           ├── nasi_telur_dadar.png  # Foto menu utama
 │           └── tahu_tek_tek.png      # Foto menu utama
 ├── src/

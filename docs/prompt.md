@@ -40,7 +40,8 @@ gubuk-kuliner/
 │   └── assets/
 │       └── img/
 │           ├── logo.svg         # Logo vektor brand
-│           ├── og-image.svg     # Preview gambar share media sosial
+│           ├── og-image.svg     # Source SVG untuk OG image
+│           ├── og-image.png     # OG image 1200x630 (PNG untuk sosial media)
 │           ├── nasi_telur_dadar.png  # Foto menu utama
 │           └── tahu_tek_tek.png      # Foto menu utama
 ├── src/
@@ -419,7 +420,7 @@ npm run preview      # Preview build produksi
 
 ## Catatan
 
-- Gambar `og-image.svg` saat ini masih SVG. Untuk kompatibilitas penuh dengan WhatsApp/Facebook/LinkedIn, sebaiknya diganti ke format **PNG 1200×630px**.
+- OG image sudah dalam format **PNG 1200×630px** untuk kompatibilitas penuh dengan WhatsApp, Facebook, Twitter, dan LinkedIn. Source SVG tetap tersedia di `og-image.svg`.
 - Foto menu (`nasi_telur_dadar.png`, `tahu_tek_tek.png`) sudah lokal. Foto galeri lainnya dari Unsplash (ilustrasi).
 - Semua konten bisa diedit melalui `src/data/site.ts` tanpa menyentuh komponen.
 - Data nutrisi disimpan terpisah di `src/data/nutrition.ts` agar mudah diupdate tanpa mengubah komponen.
